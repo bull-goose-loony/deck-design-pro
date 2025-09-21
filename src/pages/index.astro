@@ -1,16 +1,32 @@
 ---
-
+const title = "DDP — Outdoor Structure Plans & Renderings";
 ---
-
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-white text-gray-900">
+    <header class="border-b">
+      <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+        <span class="font-semibold">DDP</span>
+        <nav class="text-sm">
+          <a class="px-3 py-2 hover:text-gray-600" href="/services">Services</a>
+          <a class="px-3 py-2 hover:text-gray-600" href="/blog">Blog</a>
+          <a class="px-3 py-2 hover:text-gray-600" href="/contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-6 py-16">
+      <h1 class="text-4xl font-semibold tracking-tight">Plans & photoreal renderings for contractors</h1>
+      <p class="mt-4 max-w-2xl text-gray-600">
+        Permit-ready plan sets and sales-ready renders. Fast turnarounds. Clear deliverables.
+      </p>
+      <a href="/contact" class="mt-8 inline-block rounded-md bg-gray-900 px-6 py-3 text-white hover:bg-black">
+        Get a quote
+      </a>
+    </main>
+  </body>
 </html>
