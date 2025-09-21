@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = "Services";
+const pageDesc  = "Explore our professional services for contractors: permit-ready plan sets, 3D renderings, and fast revisions for pergolas, decks, and patio covers.";
+const url = new URL(Astro.url);
+---
+
+<BaseLayout
+  title={`${pageTitle} | Deck Design Pro`}
+  description={pageDesc}
+  canonicalUrl={url.origin + url.pathname}
+  ogImage="/public/sample-image.jpg"
+  jsonLd={{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Outdoor Structure Plans & Renderings",
+  "provider": {
+    "@type": "Organization",
+    "name": "Deck Design Pro",
+    "url": "https://deckdesignpro.com",
+    "logo": "https://deckdesignpro.com/logo.png"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  },
+  "description": "Permit-ready plan sets, 3D renderings, and fast revisions for contractors building decks, pergolas, and patio covers."
+}}
+>
+  <html lang="en">
+    <body class="mx-auto max-w-3xl px-6 py-12">
+      <h1 class="text-3xl font-semibold">Services</h1>
+    </body>
+  </html>
+</BaseLayout>

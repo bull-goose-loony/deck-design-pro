@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getLocations } from '@/lib/cms/storyblok';
+
+const stories = await getLocations();
+
+// group by state
+const byState = stories.reduce((acc: Record<string, any[]>, s: any) => {
+  const [, state] = s.full_slug.split('/'); // 'locations/ks/overland-park'
+  (acc[state] ||= []).push(s);
+  return acc;
+}, {});
+---
+
+<BaseLayout title="Locations | Deck Design Pro" description="Find service coverage by city and county.">
+  <h1 class="text-3xl font-semibold">Locations</h1>
+  <p class="mt-3 text-gray-700">We support contractors in select cities and counties across the U.S.</p>
+
+  <div class="mt-8 space-y-8">
+    {Object.entries(byState).map(([state, entries]) => (
+      <section>
+        <h2 class="text-xl font-semibold uppercase">{state}</h2>
+        <ul class="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {entries.map((s: any) => (
+            <li>
+              <a class="text-gray-900 hover:underline" href={`/${s.full_slug}`}>{s.name}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

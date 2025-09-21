@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = "About";
+const pageDesc  = "TODO";
+const url = new URL(Astro.url);
+---
+
+<BaseLayout
+  title={`${pageTitle} | Deck Design Pro`}
+  description={pageDesc}
+  canonicalUrl={url.origin + url.pathname}
+  ogImage="/public/sample-image.jpg"
+  jsonLd={{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Deck Design Pro",
+  "url": "https://deckdesignpro.com/about",
+  "description": "Learn more about Deck Design Pro — our mission, experience, and commitment to helping contractors get faster approvals and win more projects.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Deck Design Pro",
+    "url": "https://deckdesignpro.com",
+    "logo": "https://deckdesignpro.com/logo.png"
+  }
+}}
+>
+  <html lang="en">
+    <body class="mx-auto max-w-3xl px-6 py-12">
+      <h1 class="text-3xl font-semibold">About</h1>
+    </body>
+  </html>
+</BaseLayout>

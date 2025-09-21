@@ -1,0 +1,91 @@
+---
+import '@/styles/global.css'
+const {
+  title = "Deck Design Pro",
+  description = "Outdoor structure plans & photoreal renderings for contractors.",
+  canonicalUrl,            // e.g., `https://example.com/services`
+  ogImage = "/og-default.jpg",
+  noIndex = false,         // set true on drafts/thanks pages
+  lang = "en",
+  jsonLd = null as unknown // pass an object to render JSON-LD
+} = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    {description && <meta name="description" content={description} />}
+    {noIndex && <meta name="robots" content="noindex,nofollow" />}
+
+    {/* Canonical */}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    {/* Open Graph / Twitter */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    {/* Icons / Manifest (add files in /public) */}
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    {/* Font example (swap for your setup) */}
+    {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> */}
+    {/* <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" /> */}
+
+    {/* JSON-LD Schema */}
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+  </head>
+
+  <body class="min-h-screen bg-white text-gray-900 antialiased">
+    {/* Skip link for a11y */}
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 rounded bg-gray-900 px-3 py-2 text-white">
+      Skip to content
+    </a>
+
+    {/* Optional global banner area */}
+    <div id="site-banner" aria-live="polite"></div>
+
+    <header class="border-b bg-white">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href="/" class="text-lg font-semibold tracking-tight">DDP</a>
+        <nav aria-label="Primary" class="flex gap-2 text-sm">
+          <a class="rounded px-3 py-2 hover:bg-gray-100" href="/">Home</a>
+          <a class="rounded px-3 py-2 hover:bg-gray-100" href="/about">About</a>
+          <a class="rounded px-3 py-2 hover:bg-gray-100" href="/services">Services</a>
+          <a class="rounded px-3 py-2 hover:bg-gray-100" href="/blog">Blog</a>
+          <a class="rounded px-3 py-2 hover:bg-gray-100" href="/contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    {/* One main landmark per page; your page should render its own <h1> inside */}
+    <main id="main" class="mx-auto max-w-7xl px-6 py-12">
+      <slot />
+    </main>
+
+    <footer class="border-t bg-gray-50">
+      <div class="mx-auto max-w-7xl px-6 py-10 text-sm text-gray-600">
+        <p>© {new Date().getFullYear()} Deck Design Pro. All rights reserved.</p>
+        <nav aria-label="Footer" class="mt-2 flex gap-3">
+          <a href="/privacy" class="hover:text-gray-900">Privacy</a>
+          <a href="/terms" class="hover:text-gray-900">Terms</a>
+          <a href="/sitemap.xml" class="hover:text-gray-900">Sitemap</a>
+        </nav>
+      </div>
+    </footer>
+
+    {/* Scripts for banner/metrics can mount here */}
+  </body>
+</html>

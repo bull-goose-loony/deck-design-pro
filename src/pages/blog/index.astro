@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+const pageTitle = "Blog";
+const pageDesc  = "Read articles on outdoor structure design, contractor workflows, permit approvals, and rendering best practices to keep your projects running smoothly.";
+const url = new URL(Astro.url);
+---
+
+<BaseLayout
+  title={`${pageTitle} | Deck Design Pro`}
+  description={pageDesc}
+  canonicalUrl={url.origin + url.pathname}
+  ogImage="/public/sample-image.jpg"
+  jsonLd={{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Deck Design Pro Blog",
+  "url": "https://deckdesignpro.com/blog",
+  "description": "Articles on outdoor structure design, contractor workflows, permit approvals, and rendering best practices.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Deck Design Pro",
+    "url": "https://deckdesignpro.com",
+    "logo": "https://deckdesignpro.com/logo.png"
+  }
+}}
+>  <html lang="en">
+    <body class="mx-auto max-w-3xl px-6 py-12">
+      <h1 class="text-3xl font-semibold">Blog</h1>
+    </body>
+  </html>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = "Contact";
+const pageDesc  = "Request a quote, ask a question, or upload your project details. Our team delivers fast, accurate plans and renderings for contractors everywhere.";
+const url = new URL(Astro.url);
+---
+
+<BaseLayout
+  title={`${pageTitle} | Deck Design Pro`}
+  description={pageDesc}
+  canonicalUrl={url.origin + url.pathname}
+  ogImage="/public/sample-image.jpg"
+  jsonLd={{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Deck Design Pro",
+  "url": "https://deckdesignpro.com/contact",
+  "description": "Get in touch with Deck Design Pro to request a quote, upload project details, or ask a question.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Deck Design Pro",
+    "url": "https://deckdesignpro.com"
+  }
+}}
+>
+  <html lang="en">
+    <body class="mx-auto max-w-3xl px-6 py-12">
+      <h1 class="text-3xl font-semibold">Contact</h1>
+    </body>
+  </html>
+</BaseLayout>
