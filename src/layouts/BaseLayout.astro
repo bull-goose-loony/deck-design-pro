@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css'
+import Analytics from '@/components/Analytics.astro'
 const {
   title = "Deck Design Pro",
   description = "Outdoor structure plans & photoreal renderings for contractors.",
@@ -37,6 +38,8 @@ const {
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <slot name="head" />
+    <Analytics /> 
 
     {/* Font example (swap for your setup) */}
     {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> */}

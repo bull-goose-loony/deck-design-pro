@@ -1,3 +1,5 @@
+# local https server
+localhost*.pem
 # build output
 dist/
 # generated types
