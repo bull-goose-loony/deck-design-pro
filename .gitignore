@@ -1,9 +1,6 @@
-# local https server
-localhost*.pem
 # build output
 dist/
-# generated types
-.astro/
+.output/
 
 # dependencies
 node_modules/
@@ -22,5 +19,6 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
-.idea/
+pnpm-lock.yaml
+
+.astro

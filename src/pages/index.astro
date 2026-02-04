@@ -1,17 +1,347 @@
-
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Hero from '@/components/Hero.astro';
-import { getStory } from '@/lib/cms/storyblok';
+import Layout from '~/layouts/PageLayout.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro'
+import Prices from '~/components/widgets/Pricing.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
-// const isDraft = Astro.url.searchParams.get('_draft') === '1';
-// const story = await getStory('home', { draft: isDraft });
-// Making sure draft works. Once this is in production and you're sure it's working, uncomment the two lines and delete the forced one
-const story = await getStory('home', { draft: true });
+import img1 from '~/assets/images/plan-page1.png'
 
-const c = story?.content ?? {};
+const metadata = {
+  title: 'A Full-Service Custom Deck & Exterior Structure Design Firm',
+  ignoreTitleTemplate: true,
+};
 ---
-<BaseLayout title="DDP — Outdoor Structure Plans & Renderings">
-  <Hero title={c.heroTitle} subtitle={c.heroSubtitle} ctaLabel={c.ctaLabel} ctaUrl={c.ctaUrl} />
-</BaseLayout>
 
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get started',
+        href: 'https://github.com/arthelokyo/astrowind',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+      { text: 'Learn more', href: '#features' },
+    ]}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+  >
+    <Fragment slot="title">
+      A full service custom 
+      <span class="text-accent dark:text-white"> deck 
+        <span class="hidden xl:inline"> & exterior structure </span>
+        design
+      </span> 
+      firm
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">Deck Design Pro</span> is a full-service custom deck and exterior structure design firm</span
+      >
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
+      providing deck design, 3D rendirings, construction drawings and permit-friendly plans in all 50 states and around the world.
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget TODO: Storyblockable ******************* -->
+  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    tagline="Services"
+    title="Impress clients, win bids"
+    items={[
+      {
+        title: 'Built on top of Astro 5.0',
+        description:
+          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+      },
+      {
+        title: 'Styled using Tailwind CSS',
+        description:
+          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+      },
+      {
+        title: 'Cross-browser compatibility',
+        description:
+          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+      },
+    ]}
+    image={{
+    src: '~/src/assets/images/plan-page1.png',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
+      Gain a competitive advantage by incorporating industry leading practices
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-dark"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'High level of customization',
+        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+      },
+      {
+        title: 'Multiple layout possibilities',
+        description:
+          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+      },
+      {
+        title: 'Fully responsive design',
+        description:
+          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+      },
+      {
+        title: 'Integration of media',
+        description:
+          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
+      alt: 'Blueprint Image',
+    }}
+  >
+    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Pricing Widget *********** -->
+  <Prices
+    title="Design Pricing"
+    subtitle="Only pay for what you need"
+    prices={[
+      {
+        title: 'basic',
+        subtitle: 'Optimal choice for early-stage or homeowner visualization',
+        price: 275,
+        period: 'per plan set',
+        items: [
+          {
+            description: 'Conceptual design and initial design process',
+          },
+          {
+            description: '3D project renderings and floor plan with dimensions',
+          },
+          {
+            description: 'Two revisions at no additional charge',
+          },
+          {
+            description: 'Help with finalizing design for HOA submittals and approval',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get Started',
+          href: '#',
+        },
+      },
+      {
+        title: 'technical',
+        subtitle: 'Suitable for building department permit submission',
+        price: 550,
+        period: 'Per Plan Set',
+        items: [
+          {
+            description: 'Includes everything from the Basic package',
+          },
+          {
+            description: 'Adds framing plans, elevations, and construction details',
+          },
+          {
+            description: 'Two no-charge revisions for permit examiner feedback',
+          },
+          {
+            description: 'Detailed documentation for builder or contractor use',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started',
+          href: '#',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'popular',
+      },
+      {
+        title: 'engineered',
+        subtitle: 'Intended for finalized permit-ready construction documents',
+
+        price: 1350,
+        period: 'Per Plan Set',
+        items: [
+          {
+            description: 'Includes everything from the Technical package',
+          },
+          {
+            description: 'Adds seal, approval, and digital signature from our licensed architectural engineer',
+          },
+          {
+            description: 'Covers all required revisions for building department approval',
+          },
+          {
+            description: 'Guarantees compliance with engineering standards',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started',
+          href: '#',
+        },
+      },
+    ]}
+  />
+
+
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title="Words from real customers"
+    testimonials={[
+      {
+        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
+        name: 'Emily Kennedy',
+        job: 'Front-end developer',
+        image: {
+          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
+          alt: 'Emily Kennedy Image',
+        },
+      },
+      {
+        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
+        name: 'Sarah Hansen',
+        job: 'Photographer',
+        image: {
+          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Sarah Hansen Image',
+        },
+      },
+      {
+        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
+        name: 'Mark Wilkinson',
+        job: 'Small business owner',
+        image: {
+          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
+          alt: 'Mark Wilkinson Image',
+        },
+      },
+    ]}
+    callToAction={{
+      target: '_blank',
+      text: 'More testimonials...',
+      href: 'https://github.com/arthelokyo/astrowind',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="Get your dream website up and running in no time with AstroWind."
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Download</span>',
+        description:
+          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Add content</span>',
+        description:
+          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
+        icon: 'tabler:letter-case',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        description:
+          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
+        icon: 'tabler:paint',
+      },
+      {
+        title: 'Ready!',
+        icon: 'tabler:check',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      alt: 'Steps image',
+    }}
+  />
+
+  <!-- HighlightedPosts Widget ******* -->
+
+  <BlogLatestPosts
+    title="Find out more content in our Blog"
+    information={`The blog is used to display AstroWind documentation.
+                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
+                        Astro is a very interesting technology. Thanks.
+                `}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'Why AstroWind?',
+        description:
+          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+      },
+      {
+        title: 'What do I need to start?',
+        description:
+          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+      },
+      {
+        title: 'How to install the Astro + Tailwind CSS template?',
+        description:
+          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+      },
+      {
+        title: "What's something that you don't understand?",
+        description:
+          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+      },
+      {
+        title: 'What is something that you would like to try again?',
+        description:
+          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+      },
+      {
+        title: 'If you could only ask one question to each person you meet, what would that question be?',
+        description:
+          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+      },
+    ]}
+  />
+</Layout>
