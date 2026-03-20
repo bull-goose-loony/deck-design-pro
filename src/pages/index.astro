@@ -6,12 +6,11 @@ import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-
 import img1 from '~/assets/images/plan-page1.png'
+
+// import Stats from '~/components/widgets/Stats.astro';
+// import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'A Full-Service Custom Deck & Exterior Structure Design Firm',
@@ -40,7 +39,7 @@ const metadata = {
       <span class="text-accent dark:text-white"> deck 
         <span class="hidden xl:inline"> & exterior structure </span>
         design
-      </span> 
+      </span>
       firm
     </Fragment>
 
@@ -49,38 +48,38 @@ const metadata = {
         <span class="font-semibold">Deck Design Pro</span> is a full-service custom deck and exterior structure design firm</span
       >
       <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      providing deck design, 3D rendirings, construction drawings and permit-friendly plans in all 50 states and around the world.
+      providing deck design, 3D renderings, construction drawings and permit-friendly plans in all 50 states and around the world.
     </Fragment>
   </Hero>
 
   <!-- Note Widget TODO: Storyblockable ******************* -->
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+  <Note title="Philosophy:" description="Design grounded in precision, durability, and practical craftsmanship" />
 
   <!-- Content Widget **************** -->
 
   <Content
     isReversed
     tagline="Services"
-    title="Impress clients, win bids"
+    title="TODO: Services blurb"
     items={[
       {
-        title: 'Built on top of Astro 5.0',
+        title: 'Service 1: A',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Service 1: B',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Service 1: C',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       },
     ]}
     image={{
-    src: '~/src/assets/images/plan-page1.png',
+    src: img1,
       alt: 'Colorful Image',
     }}
   >
@@ -292,16 +291,6 @@ const metadata = {
       src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
       alt: 'Steps image',
     }}
-  />
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
   />
 
   <!-- FAQs Widget ******************* -->
