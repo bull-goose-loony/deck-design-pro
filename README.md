@@ -147,6 +147,13 @@ Any static assets, like images, can be placed in the `public/` directory if they
 
 All commands are run from the root of the project, from a terminal:
 
+If you use Nix, enter the development environment first:
+
+```shell
+nix develop
+npm ci
+```
+
 | Command             | Action                                             |
 | :------------------ | :------------------------------------------------- |
 | `npm install`       | Installs dependencies                              |
